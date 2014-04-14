@@ -1,0 +1,39 @@
+
+<div class="list no-margin">
+
+    <div class="item jw-player">
+        <div class="ui360 ui360-vis">
+            <a id="jw-source" type="audio/mp3" xhref="http://api.soundcloud.com/tracks/140485652/stream?client_id=0be8085a39603d77fbf672a62a7929ea"></a>
+        </div>
+    </div>
+
+    <div class="item item-avatar">
+        <img ng-src="{{currentSingle.artwork_url}}" alt="">
+        <h2 ng-click="back()" class="jw-link">
+            <i class="icon icon-email"></i>
+            {{currentSingle.title}}
+        </h2>
+        <p>{{currentSingle.jw_created_at | date: date: "MMMM dd yyyy" }}</p>
+    </div>
+
+    <div class="item item-body">
+        <img class="full-image" ng-src="{{ currentSingle.jw_artwork_url}}" alt="">
+
+        <pre>{{currentSingle.description}}</pre>
+
+        <p>
+            <a href="" class="subdued">{{currentSingle.favoritings_count}} Like</a>
+            <a href="" class="subdued">{{currentSingle.comment_count}} Comment</a>
+        </p>
+
+    </div>
+</div>
+
+<div class="comment">
+    <a href="" class="item item-avatar" ng-repeat="comment in currentSingle.comments">
+        <img ng-src="{{comment.user.avatar_url}}" alt="">
+        <h2 class="comment">{{comment.user.username}}</h2>
+        <pre class="comment">{{comment.body}}</pre>
+        <p>{{comment.jw_created_at | date: date: "MMMM dd yyyy"}}</p>
+    </a>
+</div>

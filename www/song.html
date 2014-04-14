@@ -1,0 +1,23 @@
+
+<ion-slide-box>
+
+    <ion-slide>
+        <ion-scroll>
+            <div class="list">
+                <a href="" class="item item-avatar" ng-repeat="single in singles" >
+                    <img ng-src="{{single.artwork_url}}" alt="">
+                    <h2 ng-click="selectSingle(single)">{{single.title}}</h2>
+                    <p>{{ single.jw_created_at | date: date: "MMMM dd yyyy" }}</p>
+                </a>
+            </div>
+        </ion-scroll>
+    </ion-slide>
+
+    <ion-slide>
+        <ion-scroll>
+            <div ng-include src="'play.html'"></div>
+        </ion-scroll>
+    </ion-slide>
+
+</ion-slide-box>
+

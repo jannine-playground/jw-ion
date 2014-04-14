@@ -1,0 +1,55 @@
+
+body.blur {
+  background: url("/images/blur.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.jw-player {
+  maring: 0 auto;
+}
+
+.jw-player > div {
+  margin: 0 auto;
+}
+
+.jw-link {
+  cursor: pointer;
+}
+
+div.sm2-timing.alignTweak {
+  color: orange;
+}
+
+
+.comment > a.item.item-avatar::after {
+  content:none;
+}
+
+.comment {
+  margin-top:0px;
+}
+.comment h2{
+  white-space: wrap;
+}
+
+.list.no-margin {
+  margin-bottom: 0px;
+}
+
+.item pre{
+  padding : 10px 0;
+  white-space: pre;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+.full-image {
+  box-shadow: 1px 1px 5px gray;
+}
+
+pre.comment {
+  padding: 0px;
+}
+
+h2.comment {
+  color:black;
+}
