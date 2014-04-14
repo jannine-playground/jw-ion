@@ -1,5 +1,5 @@
 // path to directory containing SM2 SWF
-soundManager.url = '/vendors/SoundManager/swf/';
+soundManager.url = 'vendors/SoundManager/swf/';
 
 // increased JS callback frequency, combined with useHighPerformance = true
 soundManager.useFastPolling = true;
