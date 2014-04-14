@@ -115,6 +115,16 @@ app.controller('SongController', function($scope, $state, JwInfos, $ionicScrollD
     $scope.$broadcast("slideBox.setSlide", 0);
   };
 
+  $scope.pause = function() {
+    playAudio.currentAudio.pause();
+  };
+
+  $scope.isPlaying = function() {
+    if(!playAudio.currentAudio) return false;
+    var playing = !playAudio.currentAudio.paused;
+    return playing;
+  }
+
 });
 
 app.factory("JwInfos", function($http){

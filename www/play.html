@@ -8,20 +8,29 @@
         </div>
     </div>
 
-    <div class="item item-avatar">
-
+    <div class="item item-avatar jw-back">
         <img ng-src="{{currentSingle.artwork_url}}" alt="">
-
         <h2 ng-click="back()" class="jw-link">
-            <i class="ion-chevron-left" data-pack="default" data-tags="arrow, left"></i>
             {{currentSingle.title}}
         </h2>
         <p>{{currentSingle.jw_created_at | date: date: "MMMM dd yyyy" }}</p>
     </div>
 
     <div class="item item-body">
-        <img class="full-image" ng-src="{{ currentSingle.jw_artwork_url}}" ng-click="forcePlay()" alt="">
-<!--         <i class="jw-play" class="ion-play" data-pack="default" data-tags="music, watch, arrow, right"></i> -->
+
+        <img class="full-image" ng-src="{{ currentSingle.jw_artwork_url}}" ng-click="" alt="">
+
+        <div class="item tabs tabs-icon-left ng-play jw-play">
+            <a class="tab-item"  ng-click="forcePlay()">
+                <i class="icon ion-play" ng-if="!isPlaying()"></i>
+                <i class="icon ion-refresh" ng-if="isPlaying()"></i>
+                Play
+            </a>
+            <a class="tab-item" ng-click="pause()" ng-if="isPlaying()">
+                <i class="icon ion-pause"></i> Pause
+            </a>
+        </div>
+
         <pre>{{currentSingle.description}}</pre>
 
         <p>
@@ -31,6 +40,7 @@
 
     </div>
 </div>
+
 
 <div class="comment">
     <a href="" class="item item-avatar" ng-repeat="comment in currentSingle.comments">

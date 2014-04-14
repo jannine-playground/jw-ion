@@ -20,6 +20,53 @@ body.blur {
   color:gray;
 }
 
+.jw-play {
+  display: block;
+  width:100%;
+  position:relative;
+  border-top-width:0;
+  border-top:0;
+  border: none;
+}
+
+.jw-back {
+  display:block;
+}
+
+.jw-back::before {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  position: absolute;
+  top: 0;
+  right: 11px;
+  height: 100%;
+  color: #ccc;
+  content: "\f124";
+  text-transform: none;
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  font-size: 16px;
+  font-family: 'Ionicons';
+  line-height: 1;
+  speak: none;
+}
+
+.jw-play a {
+  margin: 0 auto;
+}
+
 div.sm2-timing.alignTweak {
   color: orange;
 }
@@ -47,7 +94,7 @@ div.sm2-timing.alignTweak {
 }
 
 .full-image {
-  box-shadow: 1px 1px 5px gray;
+  box-shadow: 1px 1px 10px gray;
 }
 
 pre.comment {
