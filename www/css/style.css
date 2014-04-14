@@ -33,6 +33,13 @@ body.blur {
   display:block;
 }
 
+
+.jw-description, .jw-comment {
+/*   font-family: 'Port Lligat Slab', serif; */
+/*   font-family: 'Sofadi One', cursive; */
+  font-family: 'Sniglet', cursive;
+}
+
 .jw-back::before {
   display: -webkit-box;
   display: -webkit-flex;
@@ -89,18 +96,22 @@ div.sm2-timing.alignTweak {
 
 .item pre{
   padding : 10px 0;
-  white-space: pre;
-  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  white-space: pre-wrap;
+/*   font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; */
 }
 
 .full-image {
   box-shadow: 1px 1px 10px gray;
 }
 
-pre.comment {
+pre.jw-comment {
   padding: 0px;
 }
 
-h2.comment {
-  color:black;
+h2.jw-user {
+  font-size:14px;
+}
+
+p.jw-date {
+  font-size:12px;
 }

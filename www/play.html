@@ -31,7 +31,7 @@
             </a>
         </div>
 
-        <pre>{{currentSingle.description}}</pre>
+        <pre class="jw-description">{{currentSingle.description}}</pre>
 
         <p>
             <a href="" class="subdued">{{currentSingle.favoritings_count}} Like</a>
@@ -45,8 +45,8 @@
 <div class="comment">
     <a href="" class="item item-avatar" ng-repeat="comment in currentSingle.comments">
         <img ng-src="{{comment.user.avatar_url}}" alt="">
-        <h2 class="comment">{{comment.user.username}}</h2>
-        <pre class="comment">{{comment.body}}</pre>
-        <p>{{comment.jw_created_at | date: date: "MMMM dd yyyy"}}</p>
+        <h2 class="jw-user">{{comment.user.username}}</h2>
+        <pre class="jw-comment">{{comment.body}}</pre>
+        <p class="jw-date">{{comment.jw_created_at | date: date: "MMMM dd yyyy"}}</p>
     </a>
 </div>
