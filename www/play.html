@@ -16,22 +16,21 @@
         <p>{{currentSingle.jw_created_at | date: date: "MMMM dd yyyy" }}</p>
     </div>
 
-    <div class="item item-body">
+    <div class="item item-body jw-item">
 
         <img class="full-image" ng-src="{{ currentSingle.jw_artwork_url}}" ng-click="" alt="">
 
-        <div class="item tabs tabs-icon-left ng-play jw-play">
-            <a class="tab-item"  ng-click="forcePlay()">
-<!--                 <i class="icon ion-play" ng-if="true"></i>  -->
-                <i class="icon ion-refresh" ng-if="true"></i>
-                Play
+        <div class="item tabs tabs-icon-left jw-play">
+
+            <a class="tab-item jw-tap"  ng-click="forcePlay()" =>
+                <i class="icon ion-refresh" ng-if="true"></i>  Play
             </a>
 
-            <a class="tab-item" ng-click="pause()" ng-if="isPlaying()">
+            <a class="tab-item jw-tap" ng-click="pause()" ng-if="isPlaying()">
                 <i class="icon ion-pause"></i> Pause
             </a>
 
-            <a class="tab-item" ng-click="resume()" ng-if="isPause()">
+            <a class="tab-item jw-tap" ng-click="resume()" ng-if="isPause()">
                 <i class="icon ion-loop"></i> Resume
             </a>
 
@@ -39,9 +38,9 @@
 
         <pre class="jw-description">{{currentSingle.description}}</pre>
 
-        <p class="" ng-click="toggleComments()">
+        <p class="" >
             <a href="" class="subdued">{{currentSingle.favoritings_count}} Like</a>
-            <a href="" class="subdued">{{currentSingle.comment_count}} Comment</a>
+            <a href="" class="subdued jw-tap disable-user-behavior active" ng-click="toggleComments()">{{currentSingle.comment_count}} Comment</a>
         </p>
 
     </div>

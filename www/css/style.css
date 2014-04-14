@@ -80,7 +80,8 @@ div.sm2-timing.alignTweak {
 
 
 .comment > a.item.item-avatar::after {
-  content:none;
+/*   content:none; */
+  content: "\f126";
 }
 
 .comment {
@@ -114,4 +115,16 @@ h2.jw-user {
 
 p.jw-date {
   font-size:12px;
+}
+
+.jw-tap {
+  -webkit-tap-highlight-color:gray;
+}
+
+div.list > div.item.active.item-body.jw-item {
+  background-color:white;
+}
+
+.item.tabs.tabs-icon-left.jw-play.active {
+  background-color:white;
 }

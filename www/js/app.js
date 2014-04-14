@@ -3,6 +3,8 @@ var app = angular.module('ionicApp', ['ionic'])
 app.controller('SongController', function($scope, $state, JwInfos, $ionicScrollDelegate, $ionicSlideBoxDelegate) {
 
 
+  document.addEventListener("touchstart", function(){}, true);
+
   function initReveal() {
     return;
     console.log("Init reveal");
