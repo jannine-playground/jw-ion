@@ -1,24 +1,27 @@
 
 <div class="list no-margin">
 
-    <div class="item jw-player">
+    <div class="item jw-player" ng-if="false">
         <div class="ui360 ui360-vis">
+<!--         <div class="ui360"> -->
             <a id="jw-source" type="audio/mp3" xhref="http://api.soundcloud.com/tracks/140485652/stream?client_id=0be8085a39603d77fbf672a62a7929ea"></a>
         </div>
     </div>
 
     <div class="item item-avatar">
+
         <img ng-src="{{currentSingle.artwork_url}}" alt="">
+
         <h2 ng-click="back()" class="jw-link">
-            <i class="icon icon-email"></i>
+            <i class="ion-chevron-left" data-pack="default" data-tags="arrow, left"></i>
             {{currentSingle.title}}
         </h2>
         <p>{{currentSingle.jw_created_at | date: date: "MMMM dd yyyy" }}</p>
     </div>
 
     <div class="item item-body">
-        <img class="full-image" ng-src="{{ currentSingle.jw_artwork_url}}" alt="">
-
+        <img class="full-image" ng-src="{{ currentSingle.jw_artwork_url}}" ng-click="forcePlay()" alt="">
+<!--         <i class="jw-play" class="ion-play" data-pack="default" data-tags="music, watch, arrow, right"></i> -->
         <pre>{{currentSingle.description}}</pre>
 
         <p>

@@ -16,6 +16,10 @@ body.blur {
   cursor: pointer;
 }
 
+.jw-link i {
+  color:gray;
+}
+
 div.sm2-timing.alignTweak {
   color: orange;
 }

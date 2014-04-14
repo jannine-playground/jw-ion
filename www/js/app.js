@@ -22,8 +22,27 @@ app.controller('SongController', function($scope, $state, JwInfos, $ionicScrollD
 
     var ran = Math.ceil(Math.random() * $scope.singles.length);
     var single = $scope.singles[ran];
-    play360(single);
+    //play360(single);
   });
+
+  function playNow(single) {
+    var audio = new Audio(single.jw_stream_url);
+    playAudio.currentAudio = audio;
+    playAudio.currentAudio.play();
+  }
+
+  // Play audio with native audio api.
+  function playAudio(single, force) {
+
+    if(playAudio.currentAudio)  {
+      if(force)  {
+        playAudio.currentAudio.pause();
+        playNow(single);
+      }
+    }else {
+      playNow(single);
+    }
+  }
 
   function createSournd(url) {
     var options = {
@@ -34,7 +53,7 @@ app.controller('SongController', function($scope, $state, JwInfos, $ionicScrollD
     return sound;
   }
 
-  function play() {
+  function playWithSM() {
     var url = $scope.currentSingle.jw_stream_url;
     soundManager.setup({
       onready: function() {
@@ -51,6 +70,8 @@ app.controller('SongController', function($scope, $state, JwInfos, $ionicScrollD
 
   });
 
+  // Play audio with SoumandManager360 player.
+  // - Just replace href attribute.
   function play360(single){
     var xsource = $("#jw-source").attr("href", single.jw_stream_url);
     soundManager.play();
@@ -80,8 +101,14 @@ app.controller('SongController', function($scope, $state, JwInfos, $ionicScrollD
   $scope.selectSingle = function(single){
     $scope.currentSingle = single;
     loadComments(single);
-    play360(single);
+    //play360(single);
+    playAudio(single, false);
     $scope.$broadcast('slideBox.setSlide', 1);
+  };
+
+  $scope.forcePlay = function() {
+    var single = $scope.currentSingle;
+    playAudio(single, true);
   };
 
   $scope.back = function() {
@@ -89,7 +116,6 @@ app.controller('SongController', function($scope, $state, JwInfos, $ionicScrollD
   };
 
 });
-
 
 app.factory("JwInfos", function($http){
   var clientId = "0be8085a39603d77fbf672a62a7929ea";
