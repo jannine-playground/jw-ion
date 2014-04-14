@@ -22,18 +22,24 @@
 
         <div class="item tabs tabs-icon-left ng-play jw-play">
             <a class="tab-item"  ng-click="forcePlay()">
-                <i class="icon ion-play" ng-if="!isPlaying()"></i>
-                <i class="icon ion-refresh" ng-if="isPlaying()"></i>
+<!--                 <i class="icon ion-play" ng-if="true"></i>  -->
+                <i class="icon ion-refresh" ng-if="true"></i>
                 Play
             </a>
+
             <a class="tab-item" ng-click="pause()" ng-if="isPlaying()">
-                <i class="icon ion-pause"></i> Stop
+                <i class="icon ion-pause"></i> Pause
             </a>
+
+            <a class="tab-item" ng-click="resume()" ng-if="isPause()">
+                <i class="icon ion-loop"></i> Resume
+            </a>
+
         </div>
 
         <pre class="jw-description">{{currentSingle.description}}</pre>
 
-        <p>
+        <p class="" ng-click="toggleComments()">
             <a href="" class="subdued">{{currentSingle.favoritings_count}} Like</a>
             <a href="" class="subdued">{{currentSingle.comment_count}} Comment</a>
         </p>
@@ -42,8 +48,10 @@
 </div>
 
 
-<div class="comment">
-    <a href="" class="item item-avatar" ng-repeat="comment in currentSingle.comments" ng-click="toTop()">
+<div class="comment" ng-if="showComments">
+    <a href="" class="item item-avatar"
+       ng-repeat="comment in currentSingle.comments"
+       ng-click="toTop()" data-scroll-reveal="enter top move 50px">
         <img ng-src="{{comment.user.avatar_url}}" alt="">
         <h2 class="jw-user">{{comment.user.username}}</h2>
         <pre class="jw-comment">{{comment.body}}</pre>

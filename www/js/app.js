@@ -1,16 +1,14 @@
 var app = angular.module('ionicApp', ['ionic'])
-app.config(function($stateProvider, $urlRouterProvider) {
-  var sp = $stateProvider;
-  sp.state('song', {
-    url: '/',
-    templateUrl: 'song.html',
-    controller: 'SongController'
-  });
-  $urlRouterProvider.otherwise("/");
-});
-app.controller("PlayContoller", function($scope){  });
 
 app.controller('SongController', function($scope, $state, JwInfos, $ionicScrollDelegate, $ionicSlideBoxDelegate) {
+
+
+  function initReveal() {
+    return;
+    console.log("Init reveal");
+    window.scrollReveal = new window.firstReveal();
+  }
+
   JwInfos.getSingles(function(datas){
     console.log(datas[0]);
     datas.forEach(function(single){
@@ -23,12 +21,19 @@ app.controller('SongController', function($scope, $state, JwInfos, $ionicScrollD
     var ran = Math.ceil(Math.random() * $scope.singles.length);
     var single = $scope.singles[ran];
     //play360(single);
+
+    initReveal();
   });
 
   function playNow(single) {
     var audio = new Audio(single.jw_stream_url);
     playAudio.currentAudio = audio;
     playAudio.currentAudio.play();
+    playAudio.currentAudio.addEventListener("ended", function(){
+      var ran = Math.ceil(Math.random() * $scope.singles.length);
+      var newSingle = $scope.singles[ran];
+      playAudio(newSingle, true);
+    });
   }
 
   // Play audio with native audio api.
@@ -86,6 +91,12 @@ app.controller('SongController', function($scope, $state, JwInfos, $ionicScrollD
         comment.body = comment.body.trim();
         single.comments.push(comment);
       });
+
+      setTimeout(function(){
+        $scope.$apply();
+        initReveal();
+      }, 100);
+
     });
   }
 
@@ -101,9 +112,16 @@ app.controller('SongController', function($scope, $state, JwInfos, $ionicScrollD
   $scope.selectSingle = function(single){
     $scope.currentSingle = single;
     loadComments(single);
+
     //play360(single);
     playAudio(single, false);
     $scope.$broadcast('slideBox.setSlide', 1);
+
+    $scope.showComments = false;
+  };
+
+  $scope.toggleComments = function() {
+    $scope.showComments = !$scope.showComments
   };
 
   $scope.forcePlay = function() {
@@ -119,11 +137,20 @@ app.controller('SongController', function($scope, $state, JwInfos, $ionicScrollD
     playAudio.currentAudio.pause();
   };
 
+  $scope.resume = function() {
+    playAudio.currentAudio.play();
+  };
+
   $scope.isPlaying = function() {
     if(!playAudio.currentAudio) return false;
     var playing = !playAudio.currentAudio.paused;
     return playing;
   };
+
+  $scope.isPause = function() {
+    return !$scope.isPlaying();
+  };
+
 
   $scope.toTop = function() {
    $ionicScrollDelegate.scrollTop(true);
@@ -132,6 +159,18 @@ app.controller('SongController', function($scope, $state, JwInfos, $ionicScrollD
   $ionicSlideBoxDelegate.stop();
 
 });
+
+app.config(function($stateProvider, $urlRouterProvider) {
+  var sp = $stateProvider;
+  sp.state('song', {
+    url: '/',
+    templateUrl: 'song.html',
+    controller: 'SongController'
+  });
+  $urlRouterProvider.otherwise("/");
+});
+
+app.controller("PlayContoller", function($scope){  });
 
 app.factory("JwInfos", function($http){
   var clientId = "0be8085a39603d77fbf672a62a7929ea";
