@@ -27,7 +27,7 @@
                 Play
             </a>
             <a class="tab-item" ng-click="pause()" ng-if="isPlaying()">
-                <i class="icon ion-pause"></i> Pause
+                <i class="icon ion-pause"></i> Stop
             </a>
         </div>
 
@@ -43,7 +43,7 @@
 
 
 <div class="comment">
-    <a href="" class="item item-avatar" ng-repeat="comment in currentSingle.comments">
+    <a href="" class="item item-avatar" ng-repeat="comment in currentSingle.comments" ng-click="toTop()">
         <img ng-src="{{comment.user.avatar_url}}" alt="">
         <h2 class="jw-user">{{comment.user.username}}</h2>
         <pre class="jw-comment">{{comment.body}}</pre>

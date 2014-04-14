@@ -10,7 +10,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 });
 app.controller("PlayContoller", function($scope){  });
 
-app.controller('SongController', function($scope, $state, JwInfos, $ionicScrollDelegate) {
+app.controller('SongController', function($scope, $state, JwInfos, $ionicScrollDelegate, $ionicSlideBoxDelegate) {
   JwInfos.getSingles(function(datas){
     console.log(datas[0]);
     datas.forEach(function(single){
@@ -123,7 +123,13 @@ app.controller('SongController', function($scope, $state, JwInfos, $ionicScrollD
     if(!playAudio.currentAudio) return false;
     var playing = !playAudio.currentAudio.paused;
     return playing;
-  }
+  };
+
+  $scope.toTop = function() {
+   $ionicScrollDelegate.scrollTop(true);
+  };
+
+  $ionicSlideBoxDelegate.stop();
 
 });
 
