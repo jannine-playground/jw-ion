@@ -7,9 +7,9 @@
                 <a href="" class="item item-avatar" ng-repeat="single in singles" data-scroll-reveal>
                     <img ng-src="{{single.artwork_url}}" alt="">
                     <span ng-if="isPlayingTrack(single)">
-                        {{currentTime / 60.0 | number: 2}}
-                        <i class="icon ion-loading-d" ng-if="isPlayingTrack(single)"> </i>
-                        {{getDuration() / 60.0 | number: 2}}
+                        {{currentTime / 60 | number:0 }}.{{currentTime % 60 | number:0}}
+                        <i class="icon ion-loading-d" ng-if="isPlayingTrack(single)"></i>
+                        {{getDuration() / 60 | number:0}}.{{getDuration() % 60 | number:0}}
                     </span>
 
                     <h2 ng-click="selectSingle(single)">
