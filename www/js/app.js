@@ -28,6 +28,7 @@ app.controller('SongController', function($scope, $state, JwInfos, $ionicScrollD
   });
 
   function playNow(single) {
+    $scope.playingTrack = single;
     var audio = new Audio(single.jw_stream_url);
     playAudio.currentAudio = audio;
     playAudio.currentAudio.play();
@@ -35,6 +36,12 @@ app.controller('SongController', function($scope, $state, JwInfos, $ionicScrollD
       var ran = Math.ceil(Math.random() * $scope.singles.length);
       var newSingle = $scope.singles[ran];
       playAudio(newSingle, true);
+    });
+
+
+    playAudio.currentAudio.addEventListener("progress", function(){
+      $scope.currentTime = this.currentTime;
+      $scope.$apply();
     });
   }
 
@@ -105,6 +112,8 @@ app.controller('SongController', function($scope, $state, JwInfos, $ionicScrollD
   $scope.singles = [];
   $scope.currentSingle = null;
   $scope.currentSound = null;
+  $scope.playingTrack = null;
+  $scope.currentTime = 0;
 
   // Select single
   // - Update reference
@@ -153,10 +162,19 @@ app.controller('SongController', function($scope, $state, JwInfos, $ionicScrollD
     return !$scope.isPlaying();
   };
 
+  $scope.isPlayingTrack = function(single){
+     return single === $scope.playingTrack;
+  };
 
   $scope.toTop = function() {
    $ionicScrollDelegate.scrollTop(true);
   };
+
+  $scope.getDuration = function() {
+    var du = playAudio.currentAudio.duration;
+    return du;
+  };
+
 
   $ionicSlideBoxDelegate.stop();
 
